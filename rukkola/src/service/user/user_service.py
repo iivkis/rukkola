@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from rukkola.src.domain.user.user_model import User, UserModel
+from rukkola.src.domain.user.user_model import UserModel
 from rukkola.src.port.storage.tx import Tx
 from rukkola.src.port.user.user_port import UserServiceDTO, UserServicePort
 

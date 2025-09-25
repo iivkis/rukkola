@@ -1,0 +1,6 @@
+
+services:
+  api:
+    build: .
+    ports: 
+      - 9090:8000

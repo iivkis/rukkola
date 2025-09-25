@@ -1,7 +1,6 @@
 from datetime import datetime
-from typing import Any
 
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter
 
 from rukkola.src.domain.user.user_model import UserModel
 
