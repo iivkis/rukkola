@@ -1,18 +1,19 @@
 from fastapi import APIRouter, FastAPI
 
 from rukkola.src.delivery.http.user_http import UserHandler
-from rukkola.src.service.user.user_service import UserService
+from rukkola.src.service.di.di_service import ServiceDI
 
 
 def main():
+    service_di = ServiceDI()
+    service_di.wire(modules=[__name__])
+
     app = FastAPI()
 
     user_router = APIRouter(
         prefix="/users",
         tags=["users"],
     )
-
-    user_service = UserService()
 
     UserHandler()(user_router)
 

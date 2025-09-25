@@ -1,16 +1,19 @@
 from datetime import datetime
 
 from rukkola.src.domain.user.user_model import UserModel
-from rukkola.src.port.storage.tx import Tx
-from rukkola.src.port.user.user_port import UserServiceDTO, UserServicePort
+from rukkola.src.port.abc import BaseService
+from rukkola.src.port.storage import TxPort
+from rukkola.src.port.user import UserServiceDTO, UserServicePort
 
 
-class UserService(UserServicePort):
-    async def create(self, cmd: UserServiceDTO.Create.Command, tx: Tx | None = None):
+class UserService(BaseService, UserServicePort):
+    async def create(
+        self, cmd: UserServiceDTO.Create.Command, tx: TxPort | None = None
+    ):
         raise NotImplementedError
 
     async def get_user(
-        self, query: UserServiceDTO.GetUser.Query, tx: Tx | None = None
+        self, query: UserServiceDTO.GetUser.Query, tx: TxPort | None = None
     ) -> UserModel:
         return UserModel(
             id=query.user_id,
