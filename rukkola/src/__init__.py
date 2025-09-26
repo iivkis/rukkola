@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import APIRouter, FastAPI
 
 from rukkola.src.delivery.http.user_http import UserHandler
-from rukkola.src.port.composer.composer_port import ServiceComposer
+from rukkola.src.port.service_composer.service_composer_port import ServiceComposer
 from rukkola.src.service.user.user_service import UserService
 
 

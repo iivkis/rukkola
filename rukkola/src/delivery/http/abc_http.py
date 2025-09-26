@@ -1,6 +1,6 @@
 from abc import ABC
 
-from rukkola.src.port.composer import ServiceComposer
+from rukkola.src.port.service_composer import ServiceComposer
 
 
 class BaseHandler(ABC):
