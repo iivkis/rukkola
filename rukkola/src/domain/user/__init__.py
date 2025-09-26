@@ -1,3 +1,3 @@
-from .user_model import User, UserModel
+from .user_domain import User, UserEntity
 
-__all__ = ["UserModel", "User"]
+__all__ = ["UserEntity", "User"]

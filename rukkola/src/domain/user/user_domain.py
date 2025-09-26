@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from rukkola.src.domain.base_model import BaseModel
+from rukkola.src.domain.base_model import BaseEntity
 
 
 class User:
@@ -9,7 +9,7 @@ class User:
     Name = str
 
 
-class UserModel(BaseModel):
+class UserEntity(BaseEntity):
     id: User.ID
     created_at: User.CreatedAt
     name: User.Name

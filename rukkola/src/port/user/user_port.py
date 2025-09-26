@@ -2,7 +2,7 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Protocol
 
-from rukkola.src.domain.user.user_model import User, UserModel
+from rukkola.src.domain.user.user_domain import User, UserEntity
 from rukkola.src.port.storage import TxPort
 
 
@@ -27,19 +27,22 @@ class UserServicePort(Protocol):
     @abstractmethod
     async def get_user(
         self, query: UserServiceDTO.GetUser.Query, tx: TxPort | None = None
-    ) -> UserModel:
+    ) -> UserEntity:
         raise NotImplementedError
 
 
 class UserRepositoryDTO:
     class Create:
         @dataclass
-        class Command: ...
+        class Command:
+            name: str
 
 
 class UserRepositoryPort(Protocol):
     @abstractmethod
     async def create(
-        self, cmd: UserRepositoryDTO.Create.Command, tx: TxPort | None = None
+        self,
+        cmd: UserRepositoryDTO.Create.Command,
+        tx: TxPort,
     ):
         raise NotImplementedError
