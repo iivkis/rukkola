@@ -7,5 +7,14 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.117.1",
     "pydantic>=2.11.9",
+    "rukkola-rc",
     "uvicorn>=0.37.0",
 ]
+
+[tool.uv.workspace]
+members = [
+    "rukkola-rc",
+]
+
+[tool.uv.sources]
+rukkola-rc = { workspace = true }
