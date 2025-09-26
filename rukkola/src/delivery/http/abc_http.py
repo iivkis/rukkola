@@ -1,15 +1,11 @@
 from abc import ABC
 
-from dependency_injector.wiring import Provide, inject
-
-from rukkola.src.port.di.di_port import ServiceDIPort
-from rukkola.src.port.user.user_port import UserServicePort
+from rukkola.src.port.composer import ServiceComposer
 
 
 class BaseHandler(ABC):
-    @inject
     def __init__(
         self,
-        user_service: UserServicePort = Provide[ServiceDIPort.user_service],
+        service_composer: ServiceComposer,
     ):
-        self._user_service = user_service
+        self.sc = service_composer

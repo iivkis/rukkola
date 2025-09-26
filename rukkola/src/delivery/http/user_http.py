@@ -1,4 +1,3 @@
-
 from fastapi import APIRouter
 
 from rukkola.src.delivery.http.abc_http import BaseHandler
@@ -10,7 +9,7 @@ class UserHandler(BaseHandler):
     def __call__(self, user_router: APIRouter):
         @user_router.get("/{id}")
         async def get_user(id: int) -> UserModel:
-            return await self._user_service.get_user(
+            return await self.sc.user_service.get_user(
                 query=UserServiceDTO.GetUser.Query(
                     user_id=1,
                 ),
