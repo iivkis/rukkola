@@ -14,3 +14,7 @@ class UserHandler(BaseHandler):
                     user_id=1,
                 ),
             )
+
+        @user_router.get("/")
+        async def get_users() -> list[UserEntity]:
+            return await self.sc.user_service.get_users()

@@ -15,7 +15,7 @@ from rukkola.src.service.user.user_service import UserService
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    engine = create_async_engine("sqlite+aiosqlite:///db.sql")
+    engine = create_async_engine("sqlite+aiosqlite:///db.sqlite")
 
     tx = SQLAlchemyTx(async_sessionmaker(engine))
 

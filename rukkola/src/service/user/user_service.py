@@ -38,3 +38,6 @@ class UserService(BaseService, UserServicePort):
             created_at=datetime.now(),
             name="username",
         )
+
+    async def get_users(self, uof: TxPort | None = None) -> list[UserEntity]:
+        return await self._repo.get_users(tx=self.tx)

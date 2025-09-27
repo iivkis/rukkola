@@ -22,13 +22,17 @@ class UserServicePort(Protocol):
     @abstractmethod
     async def create(
         self, cmd: UserServiceDTO.Create.Command, uof: TxPort | None = None
-    ):
+    ) -> None:
         raise NotImplementedError
 
     @abstractmethod
     async def get_user(
         self, query: UserServiceDTO.GetUser.Query, uof: TxPort | None = None
     ) -> UserEntity:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def get_users(self, uof: TxPort | None = None) -> list[UserEntity]:
         raise NotImplementedError
 
 
@@ -46,4 +50,12 @@ class UserRepositoryPort(Protocol):
         cmd: UserRepositoryDTO.Create.Command,
         tx: TxPort,
     ):
+        raise NotImplementedError
+
+    # @abstractmethod
+    # async def get_user(self, user_id: User.ID) -> UserEntity:
+    #     raise NotImplementedError
+
+    @abstractmethod
+    async def get_users(self, tx: TxPort) -> list[UserEntity]:
         raise NotImplementedError
