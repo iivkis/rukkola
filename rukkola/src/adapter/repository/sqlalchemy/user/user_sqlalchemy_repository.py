@@ -1,6 +1,6 @@
 from typing import Any, TypeAlias
 
-from sqlalchemy import DateTime, String, text
+from sqlalchemy import DateTime, String, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -17,9 +17,7 @@ class UserModel(BaseModel):
     created_at: Mapped[DateTime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        server_default=text(
-            "NOW()",
-        ),
+        server_default=func.now(),
     )
 
     name: Mapped[str] = mapped_column(
