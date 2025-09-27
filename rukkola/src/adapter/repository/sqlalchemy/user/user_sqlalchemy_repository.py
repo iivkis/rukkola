@@ -36,7 +36,7 @@ class SQLAlchemyUserRepository(UserRepositoryPort):
         cmd: UserRepositoryDTO.Create.Command,
         tx: Tx,
     ):
-        async with tx() as session:
+        async with tx.session() as session:
             session.add(
                 UserModel(
                     name=cmd.name,

@@ -9,7 +9,8 @@ from rukkola.src.port.storage import TxPort
 class UserServiceDTO:
     class Create:
         @dataclass
-        class Command: ...
+        class Command:
+            name: str
 
     class GetUser:
         @dataclass
@@ -20,13 +21,13 @@ class UserServiceDTO:
 class UserServicePort(Protocol):
     @abstractmethod
     async def create(
-        self, cmd: UserServiceDTO.Create.Command, tx: TxPort | None = None
+        self, cmd: UserServiceDTO.Create.Command, uof: TxPort | None = None
     ):
         raise NotImplementedError
 
     @abstractmethod
     async def get_user(
-        self, query: UserServiceDTO.GetUser.Query, tx: TxPort | None = None
+        self, query: UserServiceDTO.GetUser.Query, uof: TxPort | None = None
     ) -> UserEntity:
         raise NotImplementedError
 
