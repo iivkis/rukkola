@@ -9,7 +9,6 @@ dependencies = [
     "alembic>=1.16.5",
     "fastapi>=0.117.1",
     "pydantic>=2.11.9",
-    "rukkola-rc",
     "sqlalchemy[asyncio]>=2.0.43",
     "uvicorn>=0.37.0",
 ]
@@ -18,6 +17,3 @@ dependencies = [
 members = [
     "rukkola-rc",
 ]
-
-[tool.uv.sources]
-rukkola-rc = { workspace = true }

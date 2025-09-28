@@ -16,7 +16,11 @@ from rukkola.src.port.user.user_port import UserRepositoryDTO, UserRepositoryPor
 class UserModel(BaseModel):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(
+        primary_key=True,
+        nullable=False,
+        autoincrement=True,
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
